@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>广播服务端</title>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous">
+</script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/sockjs-client/0.3.4/sockjs.min.js"></script>
+<script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() 
+	{
+		var stompClient = null;
+		function connect() 
+		{
+			var socket = new SockJS('/guide-link-point');
+			stompClient = Stomp.over(socket);
+			stompClient.connect({}, function(frame) 
+			{
+				debugger;
+				console.log('Connected:' + frame);
+				//接收服务端发送给/topic/server/msg的订阅消息
+				stompClient.subscribe('/user/client01/msgClient', function(response) 
+				{
+					showResponse(response.body);
+				})
+			});
+		}
+		
+		function showResponse(message)
+		{
+			$("#response").text(message);
+		}
+		connect();
+	});
+</script>
+</head>
+<body class="container">
+	<div class="form-group">
+		
+	</div>
+	<div class="container">
+		 <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">websoekct send msg to web</h3>
+            </div>
+            <div class="panel-body">
+				<div id="conversationDiv" class="form-group">
+					<label class=" col-lg-1 control-label">输入</label>
+					<div class="col-lg-3">
+						<input class="form-control" type="text" id="name" />
+					</div>
+					<div class="col-lg-1">
+						<button id="sendName" class="btn btn-primary form-control">发送</button>
+					</div>		
+					<p id="response"></p>
+				</div>
+            </div>
+         </div>
+		<noscript>
+			<h2 style="color: #e80b0a;">Sorry，浏览器不支持WebSocket</h2>
+		</noscript>
+	</div>
+</body>
+</html>

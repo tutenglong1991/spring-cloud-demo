@@ -1,0 +1,64 @@
+server: 
+  port: 7000
+  uri-encoding :  UTF-8
+spring: 
+  application: 
+    name: spring-cloud-zuul
+eureka: 
+  client: 
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://admin:admin@127.0.0.1:7001/eureka/
+      
+#开启https 
+#server:
+    #port: 8443
+    #ssl: 
+        #key-store: classpath:www.amsphere.cn.pfx
+        #key-store-password: 08132bm4l908hey
+        #keyStoreType: PKCS12
+        #keyAlias: www.abc.cn  
+feign:
+  hystrix:
+    enabled: true
+ribbon: 
+    httpclient:
+        enabled: true
+    okhttp: 
+        enabled: false
+#hystrix调用方法的超时时间，默认是1000毫秒,如果不调第一次启动会访问会报错，第二中方案是设置不超时hystrix.command.default.execution.timeout.enabled: false
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+
+zuul:
+  #默认上传文件需要在api前加/zuul
+  servlet-path: / 
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes: 
+     service-a: 
+       path: /api-a/**
+       serviceId: spring-boot-service-a
+       #不删除前缀
+       stripPrefix: false 
+     service-b: 
+       path: /api-b/**
+       serviceId: spring-boot-service-b
+       stripPrefix: false
+     service-c: 
+      path: /api-c/**
+      serviceId: spring-boot-service-c
+      stripPrefix: false
+
+ 
+
+
+
+ 

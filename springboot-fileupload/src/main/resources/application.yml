@@ -1,0 +1,27 @@
+swagger: true
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: null
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    mode: LEGACYHTML5
+  devtools:
+    restart:
+      enabled: true
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      maxRequestSize: 100MB
+      location: D:/tmp
+debug: false
+
+#注意保证 location目录存在否者会报异常
+#1.5.9配置 详见MultipartAutoConfiguration->MultipartProperties
+#spring.http.multipart.maxFileSize=10Mb
+#spring.http.multipart.maxRequestSize=100Mb
+#spring.http.multipart.location=D:/tmp

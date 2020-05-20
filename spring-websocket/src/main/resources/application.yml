@@ -1,0 +1,15 @@
+server: 
+  port: 7000
+  uri-encoding :  UTF-8
+spring: 
+  application: 
+    name: spring-cloud-zuul
+  thymeleaf: 
+    cache: false 
+    mode: LEGACYHTML5
+
+ 
+
+
+
+ 

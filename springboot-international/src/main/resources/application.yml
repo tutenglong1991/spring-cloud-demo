@@ -1,0 +1,18 @@
+swagger: true
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: null
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    mode: LEGACYHTML5
+  devtools:
+    restart:
+      enabled: true
+  messages:
+    basename: i18n/mess
+debug: false

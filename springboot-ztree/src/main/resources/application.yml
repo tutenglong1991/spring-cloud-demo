@@ -1,0 +1,25 @@
+swagger: true
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: dlp-svc-official-website
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    mode: LEGACYHTML5
+  devtools:
+    restart:
+      enabled: true
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/, classpath:/static/, classpath:/public/, file:${self-static-dir}
+  messages:
+    basename: i18n/mess
+    
+self-static-dir: D:/website
+
+debug: false

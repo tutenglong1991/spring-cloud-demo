@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/ztree/zTreeStyle.css">
+<link rel="stylesheet" href="/css/index.css">
+<script type="text/javascript" src="/js/ztree/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/js/ztree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="/js/ztree/jquery.ztree.excheck.min.js"></script>
+<script type="text/javascript" src="/js/reconnecting-websocket.min.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</head>
+<body class="container">
+	<div class="row top5">
+		<button id="openOrCloseBtn" class="btn btn-primary">隐藏</button>
+		<button id="runBtn" class="btn btn-success">运行</button>
+		<button id="clearLogBtn" class="btn btn-warning">清空日志</button>
+	</div>
+	<div class="row top5">
+		<div class="col-md-4 left-div">
+			<div>
+				<ul id="treeDemo" class="ztree"></ul>
+			</div>
+		</div>
+		<div class="col-md-8 right-div">
+			<textarea id="textConsole" readonly></textarea>
+		</div>
+	</div>
+</body>
+</html>
